@@ -17,8 +17,7 @@ from utils import constants as ct
 
 class TeknoLabel():
     def __init__(self) -> None:
-        """Provides label management, supports Pascal VOC (.xml), coco (.json), 
-        yolo (.txt) file types to save and np.ndarray to upload
+        """Provides label management, supports Pascal VOC (.xml), coco (.json), yolo (.txt) file types to save and np.ndarray to upload
 
         Raises:
             NotImplementedError: Implies that this function is not implemented yet.
@@ -102,8 +101,7 @@ class TeknoLabel():
         """Saves the labels in Pascal VOC (.xml) format to specified file
 
         Args:
-            out_file (Path): Is the result of this method 
-            which will be saved into the given path
+            out_file (Path): Is the result of this method which will be saved into the given path
 
         Raises:
             TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
@@ -127,8 +125,7 @@ class TeknoLabel():
         """Converts the np.ndarray to coco (.json) file and save it to the given path
 
         Args:
-            out_file (Path): Is the result of this method 
-            which will be saved into the given path
+            out_file (Path): Is the result of this method which will be saved into the given path
 
         Raises:
             TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
@@ -180,8 +177,7 @@ class TeknoLabel():
         """Updates the data that this object holds
 
         Args:
-            in_file (np.ndarray): Is the input of this method 
-            which is the data in the given path
+            in_file (np.ndarray): Is the input of this method which is the data in the given path
         """
 
         if shape is not None:
@@ -251,10 +247,8 @@ class TeknoLabelLoader():
         """Loads the files in the given path
 
         Args:
-            in_file (Path): Is the input of this method 
-            which is the data in the given path
-            label_type (int): An integer in constants.py file 
-            which defines the type of the label
+            in_file (Path): Is the input of this method which is the data in the given path
+            label_type (int): An integer in constants.py file which defines the type of the label
 
         Raises:
             NotImplementedError: Implies that this function is not implemented yet.
@@ -268,8 +262,7 @@ class TeknoLabelLoader():
         """Provides the Pascal VOC (.xml) file load
 
         Args:
-            in_file (Path): Is the input of this method 
-            which is the data in the given path
+            in_file (Path): Is the input of this method which is the data in the given path
 
         Raises:
             NotImplementedError: Implies that this function is not implemented yet.
@@ -283,8 +276,7 @@ class TeknoLabelLoader():
         """Provides the coco (.json) file load
 
         Args:
-            in_file (Path): Is the input of this method 
-            which is the data in the given path
+            in_file (Path): Is the input of this method which is the data in the given path
 
         Raises:
             NotImplementedError: Implies that this function is not implemented yet.
