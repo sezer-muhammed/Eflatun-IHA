@@ -4,6 +4,7 @@ import os
 import numpy as np
 from typing import Optional, Tuple, Dict
 
+
 #* taken from yolov5 repo
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[1]  # EflatunIHA root directory
@@ -26,6 +27,7 @@ class TeknoLabel():
         self.width = None
         self.height = None
         self._label_data = np.empty((0, 6))
+        self._classes = None
 
         #* Flags
         self.is_suitable_training = ct.TEKNOLABEL_TRAINABLE_NAN
@@ -173,6 +175,7 @@ class TeknoLabel():
         self,
         in_array: Optional[np.ndarray] = None,
         shape: Optional[Tuple[int, int]] = None,
+        classes: Dict[str,int] = None
     ) -> None:
         """Updates the data that this object holds
 
@@ -183,14 +186,19 @@ class TeknoLabel():
         if shape is not None:
             self._update_shape(shape)
 
+        if classes is not None:
+            self._classes = classes
+
         if in_array is not None:
             self._label_data = in_array
-
+            self._classes = classes
             if shape is not None:
                 self._update_shape(shape)
             else:
                 self.width = None
                 self.height = None
+
+
 
     def get_data(self) -> np.ndarray:
         """Returns the loaded data to np.ndarray
@@ -210,7 +218,6 @@ class TeknoLabel():
 
         self.width = shape[0]
         self.height = shape[1]
-
 
 class TeknoLabelLoader():
     def __init__(self) -> None:
