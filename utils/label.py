@@ -1,7 +1,15 @@
 from pathlib import Path
-
+import sys
+import os
 import numpy as np
 
+
+#* taken from yolov5 repo
+FILE = Path(__file__).resolve()
+ROOT = FILE.parents[1]  # EflatunIHA root directory
+if str(ROOT) not in sys.path:
+    sys.path.append(str(ROOT))  # add ROOT to PATH
+ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
 
 class TeknoLabel():
