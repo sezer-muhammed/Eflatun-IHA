@@ -173,15 +173,12 @@ class TeknoLabel():
         self,
         in_array: Optional[np.ndarray] = None,
         shape: Optional[Tuple[int, int]] = None,
-        #classes: Optional[self.dict] = None
     ) -> None:
         """Updates the data that this object holds
 
         Args:
             in_file (np.ndarray): Is the input of this method which is the data in the given path
         """
-       # if classes is None:
-       # self._label_data = classes
 
         if shape is not None:
             self._update_shape(shape)
