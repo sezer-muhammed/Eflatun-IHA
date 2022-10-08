@@ -17,6 +17,8 @@ from utils import constants as ct
 
 
 class TeknoLabel():
+
+
     def __init__(self) -> None:
         """Provides label management, supports Pascal VOC (.xml), coco (.json), yolo (.txt) file types to save and np.ndarray to upload
 
@@ -27,6 +29,7 @@ class TeknoLabel():
         self.width = None
         self.height = None
         self._label_data = np.empty((0, 6))
+        self._label_data_id = np.empty((0, 6))
         self._classes = None
 
         #* Flags
@@ -34,18 +37,14 @@ class TeknoLabel():
         self.count_of_label = self._label_data.shape[0]
         self.biggest_object_index = None
 
-        raise NotImplementedError("This Code is not implemented yet.")
 
     def __str__(self) -> str:
-        """Turns the output to a string to log.
-
-        Raises:
-            NotImplementedError: Implies that this function is not implemented yet.
+        """Turns the output to a string.
 
         Returns:
             str: Returns a string to be logged.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
+        return str(self._label_data)
 
     def __add__(self, __o):
         """Combines labels on two TeknoLabel's
@@ -89,7 +88,7 @@ class TeknoLabel():
         Returns:
             np.ndarray: Returns a numpy n-dimensional array
         """
-        raise NotImplementedError("This Code is not implemented yet.")
+        return self.get_data()
 
     def analyse(self):  #TODO edit
         """AI is creating summary for analyse
@@ -99,7 +98,7 @@ class TeknoLabel():
         """AI is creating summary for analyse_on_flight
         """
 
-    def to_pascal(self, out_file: Path):
+    def to_pascal(self, out_file: Path, img_path: Path = None):
         """Saves the labels in Pascal VOC (.xml) format to specified file
 
         Args:
@@ -108,6 +107,9 @@ class TeknoLabel():
         Raises:
             TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
         """
+        if img_path is None:
+            raise TypeError("specify image path for the label.")
+
         if self.width is None or self.height is None:
             raise TypeError("specify width and height of the image.")
 
@@ -118,12 +120,13 @@ class TeknoLabel():
             save_np2pascal(
                 data=self._label_data,
                 out_file=out_file,
+                img_path=img_path,
                 shape=(self.width, self.height)
             )
         else:
             raise TypeError("please input 'Path' object")
 
-    def to_coco(self, out_file: Path):
+    def to_coco(self, out_file: Path, img_path: Path = None):
         """Converts the np.ndarray to coco (.json) file and save it to the given path
 
         Args:
@@ -132,6 +135,9 @@ class TeknoLabel():
         Raises:
             TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
         """
+        if img_path is None:
+            raise TypeError("specify image path for the label.")
+
         if self.width is None or self.height is None:
             raise TypeError("specify width and height of the image.")
 
@@ -142,12 +148,13 @@ class TeknoLabel():
             save_np2coco(
                 data=self._label_data,
                 out_file=out_file,
+                img_path=img_path,
                 shape=(self.width, self.height)
             )
         else:
             raise TypeError("please input 'Path' object")
 
-    def to_yolo(self, out_file: Path):
+    def to_yolo(self, out_file: Path, img_path: Path = None):
         """Converts the np.ndarray to yolo (.txt) file and save it to the given path
 
         Args:
@@ -164,8 +171,9 @@ class TeknoLabel():
 
         if isinstance(out_file, Path):
             save_np2yolo(
-                data=self._label_data,
+                data=self._label_data_id,
                 out_file=out_file,
+                img_path=img_path,
                 shape=(self.width, self.height)
             )
         else:
@@ -176,12 +184,15 @@ class TeknoLabel():
         in_array: Optional[np.ndarray] = None,
         shape: Optional[Tuple[int, int]] = None,
         classes: Dict[str,int] = None
-    ) -> None:
-        """Updates the data that this object holds
+    ) -> None: #TODO Açıklama
+        """AI is creating summary for update
 
         Args:
-            in_file (np.ndarray): Is the input of this method which is the data in the given path
+            in_array (Optional[np.ndarray], optional): [description]. Defaults to None.
+            shape (Optional[Tuple[int, int]], optional): [description]. Defaults to None.
+            classes (Dict[str,int], optional): [description]. Defaults to None.
         """
+        
 
         if shape is not None:
             self._update_shape(shape)
@@ -190,15 +201,38 @@ class TeknoLabel():
             self._classes = classes
 
         if in_array is not None:
-            self._label_data = in_array
+            
             self._classes = classes
+            self._inv_classes = {v: k for k, v in self._classes.items()}
+
+            self._id2text(in_array)
+            self._text2id(in_array)
+
             if shape is not None:
                 self._update_shape(shape)
             else:
                 self.width = None
                 self.height = None
 
+    def _text2id(self, in_array):
+        try:
+            self._label_data_id = in_array.copy()
+            for label in self._label_data_id:
+                label_id = self._classes[label[5]]
+                label[5] = label_id
+        except:
+            self._label_data_id = in_array
 
+
+
+    def _id2text(self, in_array):
+        try:
+            self._label_data = in_array.copy()
+            for label in self._label_data:
+                label_id = self._inv_classes[label[5]]
+                label[5] = label_id
+        except:
+            self._label_data = in_array
 
     def get_data(self) -> np.ndarray:
         """Returns the loaded data to np.ndarray
@@ -210,11 +244,6 @@ class TeknoLabel():
         return self._label_data
 
     def _update_shape(self, shape: Tuple[int, int]):
-        """AI is creating summary for _update_shape
-
-        Args:
-            shape (Tuple[int,int]): [description]
-        """
 
         self.width = shape[0]
         self.height = shape[1]
@@ -250,12 +279,12 @@ class TeknoLabelLoader():
         """
         raise NotImplementedError("This Code is not implemented yet.")
 
-    def load(self, in_file: Path, label_type: int) -> TeknoLabel:
+    def load(self, in_file: Path, label_type: int = None) -> TeknoLabel:
         """Loads the files in the given path
 
         Args:
             in_file (Path): Is the input of this method which is the data in the given path
-            label_type (int): An integer in constants.py file which defines the type of the label
+            label_type (int, optional): An integer in constants.py file which defines the type of the label
 
         Raises:
             NotImplementedError: Implies that this function is not implemented yet.
@@ -312,3 +341,21 @@ if __name__ == "__main__":
     """
     TeknoLabel and TeknoLabelLoader Tester
     """
+    fake_np_array = np.array([[0, 0, 500, 500, 0.54, "uav"], [10, 40, 900, 120, 0.2, "uav"]], object)
+    fake_np_array_id = np.array([[0, 0, 500, 500, 0.54, 0], [10, 40, 900, 120, 0.2, 0]], object)
+    fake_shape = (3000, 1500)
+    fake_path_pascal = Path("temp/label_saver.xml")
+    fake_path_yolo = Path("temp/label_saver.txt")
+    fake_img = Path("fakeimg.jpg")
+
+    tester_teknolabel = TeknoLabel()
+
+    tester_teknolabel.update(fake_np_array_id, fake_shape, ct.TEKNOLABEL_CLASSES_SINGLE_UAV)
+    tester_teknolabel.update(fake_np_array, fake_shape, ct.TEKNOLABEL_CLASSES_SINGLE_UAV)
+
+    tester_teknolabel.get_data()
+
+    print(tester_teknolabel)
+
+    tester_teknolabel.to_pascal(Path("temp/teknolabel/pascal.xml"), Path("test.jpg"))
+    tester_teknolabel.to_yolo(Path("temp/teknolabel/yolo.txt"), Path("test.jpg"))

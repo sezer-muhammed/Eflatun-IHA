@@ -34,6 +34,14 @@ def save_np2coco(data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[
 
 
 def save_np2yolo(data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[int, int]):
+    """AI is creating summary for save_np2yolo
+
+    Args:
+        data (np.ndarray): [description]
+        out_file (Path): [description]
+        img_path (Path): [description]
+        shape (Tuple[int, int]): [description]
+    """
 
 
     out_dir = Path(os.path.dirname(out_file))
