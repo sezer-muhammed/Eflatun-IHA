@@ -2,7 +2,7 @@ from pathlib import Path
 import sys
 import os
 import numpy as np
-from typing import Optional
+from typing import Optional, Tuple
 
 #* taken from yolov5 repo
 FILE = Path(__file__).resolve()
@@ -11,11 +11,11 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
+from utils.common import load_pascal, save_np2coco, save_np2pascal, save_np2yolo
 from utils import constants as ct
 
+
 class TeknoLabel():
-
-
     def __init__(self) -> None:
         """Provides label management, supports Pascal VOC (.xml), coco (.json), 
         yolo (.txt) file types to save and np.ndarray to upload
@@ -26,11 +26,12 @@ class TeknoLabel():
 
         self.width = None
         self.height = None
-        self.is_suitable_training = ct.TEKNOLABEL_TRAINABLE_NAN
-        self.count_of_label = 0
-        self.biggest_object_index = None
-        self._label_data = None
+        self._label_data = np.empty((0, 6))
 
+        #* Flags
+        self.is_suitable_training = ct.TEKNOLABEL_TRAINABLE_NAN
+        self.count_of_label = self._label_data.shape[0]
+        self.biggest_object_index = None
 
         raise NotImplementedError("This Code is not implemented yet.")
 
@@ -44,7 +45,7 @@ class TeknoLabel():
             str: Returns a string to be logged.
         """
         raise NotImplementedError("This Code is not implemented yet.")
-    
+
     def __add__(self, __o):
         """Combines labels on two TeknoLabel's
 
@@ -88,20 +89,16 @@ class TeknoLabel():
             np.ndarray: Returns a numpy n-dimensional array
         """
         raise NotImplementedError("This Code is not implemented yet.")
-    def analyse(self):
+
+    def analyse(self):  #TODO edit
+        """AI is creating summary for analyse
         """
 
-        :return:
-        """
-    def analyse_on_flight(self):
-        """
-
-
-        :return:
+    def analyse_on_flight(self):  #TODO edit
+        """AI is creating summary for analyse_on_flight
         """
 
-
-    def to_pascal(self, out_file: Path) -> bool:
+    def to_pascal(self, out_file: Path):
         """Saves the labels in Pascal VOC (.xml) format to specified file
 
         Args:
@@ -110,15 +107,23 @@ class TeknoLabel():
 
         Raises:
             TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
-
-        Returns:
-            bool: boolean (1 or 0) to indicate whether process finished succesfully or not
         """
         if self.width is None or self.height is None:
             raise TypeError("specify width and height of the image.")
-        raise NotImplementedError("This Code is not implemented yet.")
 
-    def to_coco(self, out_file: Path) -> bool:
+        if isinstance(out_file, str):  # Exception handling
+            out_file = Path(out_file)
+
+        if isinstance(out_file, Path):
+            save_np2pascal(
+                data=self._label_data,
+                out_file=out_file,
+                shape=(self.width, self.height)
+            )
+        else:
+            raise TypeError("please input 'Path' object")
+
+    def to_coco(self, out_file: Path):
         """Converts the np.ndarray to coco (.json) file and save it to the given path
 
         Args:
@@ -127,67 +132,91 @@ class TeknoLabel():
 
         Raises:
             TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
-
-        Returns:
-            bool: boolean (1 or 0) to indicate whether process finished succesfully or not
         """
         if self.width is None or self.height is None:
             raise TypeError("specify width and height of the image.")
-        raise NotImplementedError("This Code is not implemented yet.")
 
-    def to_yolo(self, out_file: Path) -> bool:
+        if isinstance(out_file, str):  # Exception handling
+            out_file = Path(out_file)
+
+        if isinstance(out_file, Path):
+            save_np2coco(
+                data=self._label_data,
+                out_file=out_file,
+                shape=(self.width, self.height)
+            )
+        else:
+            raise TypeError("please input 'Path' object")
+
+    def to_yolo(self, out_file: Path):
         """Converts the np.ndarray to yolo (.txt) file and save it to the given path
 
         Args:
-            out_file (Path): Is the result of this method 
-            which will be saved into the given path
+            out_file (Path): Is the result of this method which will be saved into the given path
 
         Raises:
             TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
-
-        Returns:
-            bool: boolean (1 or 0) to indicate whether process finished succesfully or not
         """
         if self.width is None or self.height is None:
             raise TypeError("specify width and height of the image.")
-        raise NotImplementedError("This Code is not implemented yet.")
 
-    def update(self, in_array: Optional[np.ndarray] = None , shape = Optional[Tuple[int,int]] = None) -> None:
+        if isinstance(out_file, str):  # Exception handling
+            out_file = Path(out_file)
+
+        if isinstance(out_file, Path):
+            save_np2yolo(
+                data=self._label_data,
+                out_file=out_file,
+                shape=(self.width, self.height)
+            )
+        else:
+            raise TypeError("please input 'Path' object")
+
+    def update(
+        self,
+        in_array: Optional[np.ndarray] = None,
+        shape: Optional[Tuple[int, int]] = None
+    ) -> None:
         """Updates the data that this object holds
 
         Args:
             in_file (np.ndarray): Is the input of this method 
             which is the data in the given path
-
-        Raises:
-            NotImplementedError: Implies that this function is not implemented yet.
         """
-        if width is not None:
-            self.shape[0] = width
-        if height is not None:
-            self.shape[1] = height
-        if in_array is not None
-            self._label_data = in_array
-            self.width = width
-            self.height = height
 
-        raise NotImplementedError("This Code is not implemented yet.")
+        if shape is not None:
+            self._update_shape(shape)
+
+        if in_array is not None:
+            self._label_data = in_array
+
+            if shape is not None:
+                self._update_shape(shape)
+            else:
+                self.width = None
+                self.height = None
 
     def get_data(self) -> np.ndarray:
-        """Converts the loaded data to np.ndarray
-
-        Raises:
-            NotImplementedError: Implies that this function is not implemented yet.
+        """Returns the loaded data to np.ndarray
 
         Returns:
             np.ndarray: Returns an n-dimesnional numpy array.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
+        
+        return self._label_data
+
+    def _update_shape(self, shape: Tuple[int, int]):
+        """AI is creating summary for _update_shape
+
+        Args:
+            shape (Tuple[int,int]): [description]
+        """
+
+        self.width = shape[0]
+        self.height = shape[1]
 
 
 class TeknoLabelLoader():
-    
-
     def __init__(self) -> None:
         """Initilizes the TeknoLabelLoader class
 
@@ -195,7 +224,7 @@ class TeknoLabelLoader():
             NotImplementedError: Implies that this function is not implemented yet.
         """
         raise NotImplementedError("This Code is not implemented yet.")
-    
+
     def __call__(self) -> TeknoLabel:
         """Calls the load() method from the TeknoLabel class
 
@@ -234,7 +263,7 @@ class TeknoLabelLoader():
             TeknoLabel: The class provides label management service.
         """
         raise NotImplementedError("This Code is not implemented yet.")
-    
+
     def _xml_load(self, in_file: Path) -> TeknoLabel:
         """Provides the Pascal VOC (.xml) file load
 
@@ -248,8 +277,8 @@ class TeknoLabelLoader():
         Returns:
             TeknoLabel: The class provides label management service.
         """
-        raise NotImplementedError("This Code is not implemented yet.")      
-    
+        raise NotImplementedError("This Code is not implemented yet.")
+
     def _coco_load(self, in_file: Path) -> TeknoLabel:
         """Provides the coco (.json) file load
 
@@ -264,7 +293,7 @@ class TeknoLabelLoader():
             TeknoLabel: The class provides label management service.
         """
         raise NotImplementedError("This Code is not implemented yet.")
-    
+
     def _yolo_load(self, in_file: Path) -> TeknoLabel:
         """Provides the yolo (.txt) file load
 
