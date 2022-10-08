@@ -1,13 +1,15 @@
+import numpy as np
+import pascal_voc_writer
+from pathlib import Path
 
+def save_np2pascal(data:np.ndarray, in_file: Path, width: int, height:int):
 
-
-def save_np2pascal():
     raise NotImplementedError("This method is not implemented yet.")
 
-def save_np2coco():
+def save_np2coco(data:np.ndarray, in_file: Path, width: int, height:int):
     raise NotImplementedError("This method is not implemented yet.")
 
-def save_np2yolo():
+def save_np2yolo(data:np.ndarray, in_file: Path, width: int, height:int):
     raise NotImplementedError("This method is not implemented yet.")
     
 def load_yolo():

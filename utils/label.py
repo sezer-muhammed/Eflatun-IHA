@@ -2,7 +2,7 @@ from pathlib import Path
 import sys
 import os
 import numpy as np
-
+from typing import Optional
 
 #* taken from yolov5 repo
 FILE = Path(__file__).resolve()
@@ -101,7 +101,7 @@ class TeknoLabel():
         """
 
 
-    def to_xml(self, out_file: Path) -> bool:
+    def to_pascal(self, out_file: Path) -> bool:
         """Saves the labels in Pascal VOC (.xml) format to specified file
 
         Args:
@@ -109,11 +109,13 @@ class TeknoLabel():
             which will be saved into the given path
 
         Raises:
-            NotImplementedError: Implies that this function is not implemented yet.
+            TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
 
         Returns:
             bool: boolean (1 or 0) to indicate whether process finished succesfully or not
         """
+        if self.width is None or self.height is None:
+            raise TypeError("specify width and height of the image.")
         raise NotImplementedError("This Code is not implemented yet.")
 
     def to_coco(self, out_file: Path) -> bool:
@@ -124,11 +126,13 @@ class TeknoLabel():
             which will be saved into the given path
 
         Raises:
-            NotImplementedError: Implies that this function is not implemented yet.
+            TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
 
         Returns:
             bool: boolean (1 or 0) to indicate whether process finished succesfully or not
         """
+        if self.width is None or self.height is None:
+            raise TypeError("specify width and height of the image.")
         raise NotImplementedError("This Code is not implemented yet.")
 
     def to_yolo(self, out_file: Path) -> bool:
@@ -139,14 +143,16 @@ class TeknoLabel():
             which will be saved into the given path
 
         Raises:
-            NotImplementedError: Implies that this function is not implemented yet.
+            TypeError: Implies that the dimensions of the image is given in the wrong format or not given at all.
 
         Returns:
             bool: boolean (1 or 0) to indicate whether process finished succesfully or not
         """
+        if self.width is None or self.height is None:
+            raise TypeError("specify width and height of the image.")
         raise NotImplementedError("This Code is not implemented yet.")
 
-    def update(self, in_file: np.ndarray) -> None:
+    def update(self, in_array: Optional[np.ndarray] = None , shape = Optional[Tuple[int,int]] = None) -> None:
         """Updates the data that this object holds
 
         Args:
@@ -156,6 +162,15 @@ class TeknoLabel():
         Raises:
             NotImplementedError: Implies that this function is not implemented yet.
         """
+        if width is not None:
+            self.shape[0] = width
+        if height is not None:
+            self.shape[1] = height
+        if in_array is not None
+            self._label_data = in_array
+            self.width = width
+            self.height = height
+
         raise NotImplementedError("This Code is not implemented yet.")
 
     def get_data(self) -> np.ndarray:
