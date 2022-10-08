@@ -5,7 +5,9 @@ from typing import Tuple
 import os
 
 
-def save_np2pascal(data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[int, int]):
+def save_np2pascal(
+    data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[int, int]
+):
     """AI is creating summary for save_np2pascal
 
     Args:
@@ -22,18 +24,23 @@ def save_np2pascal(data: np.ndarray, out_file: Path, img_path: Path, shape: Tupl
 
     for label in data:
 
-        pascal_writer.addObject(label[5], label[0], label[1], label[2], label[3])
+        pascal_writer.addObject(
+            label[5], label[0], label[1], label[2], label[3]
+        )
 
     pascal_writer.save(out_file)
 
 
-
-def save_np2coco(data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[int, int]):
+def save_np2coco(
+    data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[int, int]
+):
 
     raise NotImplementedError("This method is not implemented yet.")
 
 
-def save_np2yolo(data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[int, int]):
+def save_np2yolo(
+    data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[int, int]
+):
     """AI is creating summary for save_np2yolo
 
     Args:
@@ -42,7 +49,6 @@ def save_np2yolo(data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[
         img_path (Path): [description]
         shape (Tuple[int, int]): [description]
     """
-
 
     out_dir = Path(os.path.dirname(out_file))
     out_dir.mkdir(exist_ok=True, parents=True)
@@ -81,8 +87,12 @@ if __name__ == "__main__":
     Commons tester codes
     """
 
-    fake_np_array = np.array([[0, 0, 500, 500, 0.54, "Bus"], [10, 40, 900, 120, 0.2, "IHA"]])
-    fake_np_array_id = np.array([[0, 0, 500, 500, 0.54, 0], [10, 40, 900, 120, 0.2, 1]])
+    fake_np_array = np.array(
+        [[0, 0, 500, 500, 0.54, "Bus"], [10, 40, 900, 120, 0.2, "IHA"]]
+    )
+    fake_np_array_id = np.array(
+        [[0, 0, 500, 500, 0.54, 0], [10, 40, 900, 120, 0.2, 1]]
+    )
     fake_shape = (3000, 1500)
     fake_path_pascal = Path("temp/label_saver.xml")
     fake_path_yolo = Path("temp/label_saver.txt")

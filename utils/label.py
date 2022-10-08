@@ -4,7 +4,6 @@ import os
 import numpy as np
 from typing import Optional, Tuple, Dict
 
-
 #* taken from yolov5 repo
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[1]  # EflatunIHA root directory
@@ -17,8 +16,6 @@ from utils import constants as ct
 
 
 class TeknoLabel():
-
-
     def __init__(self) -> None:
         """Provides label management, supports Pascal VOC (.xml), coco (.json), yolo (.txt) file types to save and np.ndarray to upload
 
@@ -36,7 +33,6 @@ class TeknoLabel():
         self.is_suitable_training = ct.TEKNOLABEL_TRAINABLE_NAN
         self.count_of_label = self._label_data.shape[0]
         self.biggest_object_index = None
-
 
     def __str__(self) -> str:
         """Turns the output to a string.
@@ -183,8 +179,8 @@ class TeknoLabel():
         self,
         in_array: Optional[np.ndarray] = None,
         shape: Optional[Tuple[int, int]] = None,
-        classes: Dict[str,int] = None
-    ) -> None: #TODO Açıklama
+        classes: Dict[str, int] = None
+    ) -> None:  #TODO Açıklama
         """AI is creating summary for update
 
         Args:
@@ -192,7 +188,6 @@ class TeknoLabel():
             shape (Optional[Tuple[int, int]], optional): [description]. Defaults to None.
             classes (Dict[str,int], optional): [description]. Defaults to None.
         """
-        
 
         if shape is not None:
             self._update_shape(shape)
@@ -201,7 +196,7 @@ class TeknoLabel():
             self._classes = classes
 
         if in_array is not None:
-            
+
             self._classes = classes
             self._inv_classes = {v: k for k, v in self._classes.items()}
 
@@ -223,8 +218,6 @@ class TeknoLabel():
         except:
             self._label_data_id = in_array
 
-
-
     def _id2text(self, in_array):
         try:
             self._label_data = in_array.copy()
@@ -240,13 +233,14 @@ class TeknoLabel():
         Returns:
             np.ndarray: Returns an n-dimesnional numpy array.
         """
-        
+
         return self._label_data
 
     def _update_shape(self, shape: Tuple[int, int]):
 
         self.width = shape[0]
         self.height = shape[1]
+
 
 class TeknoLabelLoader():
     def __init__(self) -> None:
@@ -337,12 +331,17 @@ class TeknoLabelLoader():
         """
         raise NotImplementedError("This Code is not implemented yet.")
 
+
 if __name__ == "__main__":
     """
     TeknoLabel and TeknoLabelLoader Tester
     """
-    fake_np_array = np.array([[0, 0, 500, 500, 0.54, "uav"], [10, 40, 900, 120, 0.2, "uav"]], object)
-    fake_np_array_id = np.array([[0, 0, 500, 500, 0.54, 0], [10, 40, 900, 120, 0.2, 0]], object)
+    fake_np_array = np.array(
+        [[0, 0, 500, 500, 0.54, "uav"], [10, 40, 900, 120, 0.2, "uav"]], object
+    )
+    fake_np_array_id = np.array(
+        [[0, 0, 500, 500, 0.54, 0], [10, 40, 900, 120, 0.2, 0]], object
+    )
     fake_shape = (3000, 1500)
     fake_path_pascal = Path("temp/label_saver.xml")
     fake_path_yolo = Path("temp/label_saver.txt")
@@ -350,12 +349,20 @@ if __name__ == "__main__":
 
     tester_teknolabel = TeknoLabel()
 
-    tester_teknolabel.update(fake_np_array_id, fake_shape, ct.TEKNOLABEL_CLASSES_SINGLE_UAV)
-    tester_teknolabel.update(fake_np_array, fake_shape, ct.TEKNOLABEL_CLASSES_SINGLE_UAV)
+    tester_teknolabel.update(
+        fake_np_array_id, fake_shape, ct.TEKNOLABEL_CLASSES_SINGLE_UAV
+    )
+    tester_teknolabel.update(
+        fake_np_array, fake_shape, ct.TEKNOLABEL_CLASSES_SINGLE_UAV
+    )
 
     tester_teknolabel.get_data()
 
     print(tester_teknolabel)
 
-    tester_teknolabel.to_pascal(Path("temp/teknolabel/pascal.xml"), Path("test.jpg"))
-    tester_teknolabel.to_yolo(Path("temp/teknolabel/yolo.txt"), Path("test.jpg"))
+    tester_teknolabel.to_pascal(
+        Path("temp/teknolabel/pascal.xml"), Path("test.jpg")
+    )
+    tester_teknolabel.to_yolo(
+        Path("temp/teknolabel/yolo.txt"), Path("test.jpg")
+    )
