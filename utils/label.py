@@ -11,6 +11,7 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
+from utils import constants as ct
 
 class TeknoLabel():
 
@@ -22,6 +23,15 @@ class TeknoLabel():
         Raises:
             NotImplementedError: Implies that this function is not implemented yet.
         """
+
+        self.width = None
+        self.height = None
+        self.is_suitable_training = ct.TEKNOLABEL_TRAINABLE_NAN
+        self.count_of_label = 0
+        self.biggest_object_index = None
+        self._label_data = None
+
+
         raise NotImplementedError("This Code is not implemented yet.")
 
     def __str__(self) -> str:
