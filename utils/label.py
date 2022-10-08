@@ -78,6 +78,18 @@ class TeknoLabel():
             np.ndarray: Returns a numpy n-dimensional array
         """
         raise NotImplementedError("This Code is not implemented yet.")
+    def analyse(self):
+        """
+
+        :return:
+        """
+    def analyse_on_flight(self):
+        """
+
+
+        :return:
+        """
+
 
     def to_xml(self, out_file: Path) -> bool:
         """Saves the labels in Pascal VOC (.xml) format to specified file
