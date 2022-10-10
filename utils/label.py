@@ -86,12 +86,12 @@ class TeknoLabel():
         """
         return self.get_data()
 
-    def analyse(self):  #TODO edit
-        """AI is creating summary for analyse
+    def analyse(self):
+        """Analyses the given dataset while the UAV on the ground
         """
 
-    def analyse_on_flight(self):  #TODO edit
-        """AI is creating summary for analyse_on_flight
+    def analyse_on_flight(self):
+        """Analyses the given dataset while the UAV is flying
         """
 
     def to_pascal(self, out_file: Path, img_path: Path = None):
@@ -180,13 +180,14 @@ class TeknoLabel():
         in_array: Optional[np.ndarray] = None,
         shape: Optional[Tuple[int, int]] = None,
         classes: Dict[str, int] = None
-    ) -> None:  #TODO Açıklama
-        """AI is creating summary for update
+    ) -> None:  
+        """Updates the dataset from the given array
 
         Args:
-            in_array (Optional[np.ndarray], optional): [description]. Defaults to None.
-            shape (Optional[Tuple[int, int]], optional): [description]. Defaults to None.
-            classes (Dict[str,int], optional): [description]. Defaults to None.
+            in_array (Optional[np.ndarray], optional): Input numpy array. Defaults to None.
+            shape (Optional[Tuple[int, int]], optional): describes the shape of the array. Defaults to None.
+            classes (Dict[str,int], optional): Matches the class string with an integer in a dictionary.
+            Defaults to None.
         """
 
         if shape is not None:
