@@ -289,7 +289,7 @@ class TeknoLabelLoader():
         """
         raise NotImplementedError("This Code is not implemented yet.")
 
-    def _xml_load(self, in_file: Path) -> TeknoLabel:
+    def _pascal_load(self, in_file: Path) -> TeknoLabel:
         """Provides the Pascal VOC (.xml) file load
 
         Args:
