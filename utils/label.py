@@ -1,6 +1,7 @@
 from pathlib import Path
 import sys
 import os
+import time
 import numpy as np
 from typing import Optional, Tuple, Dict
 
@@ -11,7 +12,7 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from utils.common import load_pascal, save_np2coco, save_np2pascal, save_np2yolo
+from utils.common import load_pascal, save_np2coco, save_np2pascal, save_np2yolo, load_coco, load_yolo
 from utils import constants as ct
 
 
@@ -40,7 +41,15 @@ class TeknoLabel():
         Returns:
             str: Returns a string to be logged.
         """
-        return str(self._label_data)
+
+        log_message = f"""
+Label Data:
+{self._label_data}
+
+Label Data Classes: {self._classes}
+        """
+
+        return log_message
 
     def __add__(self, __o):
         """Combines labels on two TeknoLabel's
@@ -180,7 +189,7 @@ class TeknoLabel():
         in_array: Optional[np.ndarray] = None,
         shape: Optional[Tuple[int, int]] = None,
         classes: Dict[str, int] = None
-    ) -> None:  
+    ) -> None:
         """Updates the dataset from the given array
 
         Args:
@@ -250,9 +259,17 @@ class TeknoLabelLoader():
         Raises:
             NotImplementedError: Implies that this function is not implemented yet.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
+        self.label_path = None
+        self.time_stamp = None
+        self.label_type = None
 
-    def __call__(self) -> TeknoLabel:
+    def __call__(
+        self,
+        in_file: Path,
+        classes: Dict[str, int],
+        in_img: Path = None,
+        label_type: int = None
+    ) -> TeknoLabel:
         """Calls the load() method from the TeknoLabel class
 
         Raises:
@@ -261,7 +278,7 @@ class TeknoLabelLoader():
         Returns:
             TeknoLabel: The class provides label management service.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
+        return self.load(in_file, classes, in_img, label_type)
 
     def __str__(self) -> str:
         """Turns the output to a string.
@@ -272,9 +289,22 @@ class TeknoLabelLoader():
         Returns:
             str: Returns a string to be logged.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
 
-    def load(self, in_file: Path, label_type: int = None) -> TeknoLabel:
+        log_message = f"""
+{"Label Path"}: {self.label_path}
+{"Access Time"}: {self.time_stamp}
+{"Label Type"}: {ct.TEKNOLABEL_TYPES[self.label_type]}
+                        """
+
+        return log_message
+
+    def load(
+        self,
+        in_file: Path,
+        classes: Dict[str, int],
+        in_img: Path = None,
+        label_type: int = None
+    ) -> TeknoLabel:
         """Loads the files in the given path
 
         Args:
@@ -282,14 +312,42 @@ class TeknoLabelLoader():
             label_type (int, optional): An integer in constants.py file which defines the type of the label
 
         Raises:
-            NotImplementedError: Implies that this function is not implemented yet.
+            TypeError: Specify the label type
 
         Returns:
             TeknoLabel: The class provides label management service.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
 
-    def _xml_load(self, in_file: Path) -> TeknoLabel:
+        if isinstance(in_file, str):  # Exception handling
+            in_file = Path(in_file)
+
+        if isinstance(in_img, str):  # Exception handling
+            in_img = Path(in_img)
+
+        if label_type == ct.TEKNOLABEL_TYPE_COCO:
+            np_data, width, height = self._coco_load(in_file, in_img)
+
+        elif label_type == ct.TEKNOLABEL_TYPE_YOLO:
+            np_data, width, height = self._yolo_load(in_file, in_img)
+
+        elif label_type == ct.TEKNOLABEL_TYPE_PASCAL:
+            np_data, width, height = self._xml_load(in_file, in_img)
+
+        else:
+            raise TypeError("Specify the label type")
+
+        temp_tekno_label = TeknoLabel()
+        temp_tekno_label.update(
+            in_array=np_data, shape=(width, height), classes=classes
+        )
+
+        self.label_path = in_file
+        self.time_stamp = time.asctime()  #TODO Check if the is correct
+        self.label_type = label_type
+
+        return temp_tekno_label
+
+    def _xml_load(self, in_file: Path, in_img: Path = None) -> TeknoLabel:
         """Provides the Pascal VOC (.xml) file load
 
         Args:
@@ -301,9 +359,10 @@ class TeknoLabelLoader():
         Returns:
             TeknoLabel: The class provides label management service.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
 
-    def _coco_load(self, in_file: Path) -> TeknoLabel:
+        return load_pascal(in_file, in_img)
+
+    def _coco_load(self, in_file: Path, in_img: Path = None) -> TeknoLabel:
         """Provides the coco (.json) file load
 
         Args:
@@ -315,9 +374,9 @@ class TeknoLabelLoader():
         Returns:
             TeknoLabel: The class provides label management service.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
+        return load_coco(in_file, in_img)
 
-    def _yolo_load(self, in_file: Path) -> TeknoLabel:
+    def _yolo_load(self, in_file: Path, in_img: Path) -> TeknoLabel:
         """Provides the yolo (.txt) file load
 
         Args:
@@ -330,7 +389,7 @@ class TeknoLabelLoader():
         Returns:
             TeknoLabel: The class provides label management service.
         """
-        raise NotImplementedError("This Code is not implemented yet.")
+        return load_yolo(in_file, in_img)
 
 
 if __name__ == "__main__":
@@ -367,3 +426,12 @@ if __name__ == "__main__":
     tester_teknolabel.to_yolo(
         Path("temp/teknolabel/yolo.txt"), Path("test.jpg")
     )
+
+    print(tester_teknolabel)
+
+    tester_teknolabel_loader = TeknoLabelLoader()
+    tester_teknolabel_loader(
+        fake_path_pascal, ct.TEKNOLABEL_CLASSES_SINGLE_UAV, fake_img,
+        ct.TEKNOLABEL_TYPE_PASCAL
+    )
+    print(tester_teknolabel_loader)
