@@ -318,9 +318,7 @@ class TeknoLabelLoader():
             TeknoLabel: The class provides label management service.
         """
 
-<<<<<<< HEAD
     def _pascal_load(self, in_file: Path) -> TeknoLabel:
-=======
         if isinstance(in_file, str):  # Exception handling
             in_file = Path(in_file)
 
@@ -351,7 +349,6 @@ class TeknoLabelLoader():
         return temp_tekno_label
 
     def _xml_load(self, in_file: Path, in_img: Path = None) -> TeknoLabel:
->>>>>>> 3e3a9af05bd1085aa6e195655101c787b8a89dc6
         """Provides the Pascal VOC (.xml) file load
 
         Args:

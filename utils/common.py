@@ -93,13 +93,14 @@ def load_yolo(in_file: Path, img_path: Path) -> Tuple[np.ndarray, int, int]:
     im = Image.open(img_path)
     width, height = im.size
 
-    data[:, 1] = data[:, 1] * width
-    data[:, 2] = data[:, 2] * height
-    data[:, 3] = data[:, 3] * width
-    data[:, 4] = data[:, 4] * height
+    x_min = (data[:, 1] - (data[:, 3] / 2)) * width
+    y_min = (data[:, 2] - (data[:, 4] / 2)) * height
+    x_max = (data[:, 1] + (data[:, 3] / 2)) * width
+    y_max = (data[:, 2] + (data[:, 4] / 2)) * height
+
+    data = np.stack((x_min, y_min, x_max, y_max, data[:, 0]), axis=1)
 
     data = np.array(data, dtype=np.int32)
-
     return data, width, height
 
 
