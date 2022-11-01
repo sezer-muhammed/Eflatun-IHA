@@ -9,6 +9,21 @@ import cv2
 from PIL import Image
 import xml.etree.ElementTree as ET
 
+def hash_255(string: str) -> int:
+    """AI is creating summary for hash
+
+    Args:
+        string (str): [description]
+
+    Returns:
+        int: [description]
+    """
+
+    hash = 0
+    for counter, i in enumerate(string):
+        hash += ord(i) * (counter + 5)
+    return hash % 255
+
 
 def save_np2pascal(
     data: np.ndarray, out_file: Path, img_path: Path, shape: Tuple[int, int]

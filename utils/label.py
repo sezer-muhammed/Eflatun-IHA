@@ -207,6 +207,8 @@ Label Data Classes: {self._classes}
 
         if in_array is not None:
 
+            in_array = np.array(in_array, dtype=object)
+
             self._classes = classes
             self._inv_classes = {v: k for k, v in self._classes.items()}
 
@@ -223,8 +225,8 @@ Label Data Classes: {self._classes}
         try:
             self._label_data_id = in_array.copy()
             for label in self._label_data_id:
-                label_id = self._classes[label[5]]
-                label[5] = label_id
+                label_id = self._classes[label[-1]]
+                label[-1] = label_id
         except:
             self._label_data_id = in_array
 
@@ -232,9 +234,9 @@ Label Data Classes: {self._classes}
         try:
             self._label_data = in_array.copy()
             for label in self._label_data:
-                label_id = self._inv_classes[label[5]]
-                label[5] = label_id
-        except:
+                label_id = self._inv_classes[label[-1]]
+                label[-1] = label_id
+        except Exception as a:
             self._label_data = in_array
 
     def get_data(self) -> np.ndarray:
