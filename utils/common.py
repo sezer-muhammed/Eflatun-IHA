@@ -75,7 +75,7 @@ def save_np2yolo(
     yolo_file.close()
 
 
-def load_yolo(in_file: Path, img_path: Path) -> Tuple[np.ndarray, int, int]:
+def load_yolo(in_file: Path, img_path: Path) -> Tuple[np.ndarray, int, int]: #! Fix The code!
 
     yolo_file = open(in_file, "r")
     data = yolo_file.read()
