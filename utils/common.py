@@ -10,13 +10,13 @@ from PIL import Image
 import xml.etree.ElementTree as ET
 
 def hash_255(string: str) -> int:
-    """AI is creating summary for hash
+    """Return random number between 0 - 255 from string for color generation
 
     Args:
-        string (str): [description]
+        string (str): [The text]
 
     Returns:
-        int: [description]
+        int: [0 - 255 integer]
     """
 
     hash = 0
