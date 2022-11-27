@@ -14,3 +14,9 @@ try:
     print("utils common.py")
 except:
     pass
+
+try:
+    os.system("python utils/logger.py")
+    print("utils logger.py")
+except:
+    pass
