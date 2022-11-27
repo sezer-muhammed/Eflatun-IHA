@@ -22,7 +22,8 @@ def photoselector(infile: Path, count: int, outfolder: str, copyfile: Path):
     
     for f in randomfiles:
         shutil.copy(f, Path(new_dir))
-        shutil.move(f, copyfile)
+        shutil.move(f, copyfile) #TODO bu kısım sıkıntılı. Daha iyi bir hale getirmemiz lazım. Asıl dosyaya dokunulmamalı. Onun yerine kopyalanıp taşınmalı.
+
 
 if __name__ == '__main__':
     photoselector(Path(opt.infolder), int(opt.count), str(opt.outfolder), str(opt.copy))
