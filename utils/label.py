@@ -420,7 +420,6 @@ if __name__ == "__main__":
 
     tester_teknolabel.get_data()
 
-    print(tester_teknolabel)
 
     tester_teknolabel.to_pascal(
         Path("temp/teknolabel/pascal.xml"), Path("test.jpg")
@@ -429,11 +428,9 @@ if __name__ == "__main__":
         Path("temp/teknolabel/yolo.txt"), Path("test.jpg")
     )
 
-    print(tester_teknolabel)
 
     tester_teknolabel_loader = TeknoLabelLoader()
     tester_teknolabel_loader(
         fake_path_pascal, ct.TEKNOLABEL_CLASSES_SINGLE_UAV, fake_img,
         ct.TEKNOLABEL_TYPE_PASCAL
     )
-    print(tester_teknolabel_loader)

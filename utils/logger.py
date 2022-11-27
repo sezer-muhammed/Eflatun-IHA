@@ -25,7 +25,6 @@ class EflatunLogger():
     def __init__(self):
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.INFO)
-        self.logger.info("Logger is created.")
 
     def function_logger(self, fucn: Callable, *args):
         """Runs the function and logs the input and outpus of it.
@@ -46,10 +45,6 @@ class EflatunLogger():
 
     def space(self):
         self.logger.info("")
-
-    def variable_logger(self, *args):
-        for arg in args:
-            self.logger.info(f"{arg}")
 
     def info(self, *args):
         for arg in args:
@@ -84,10 +79,10 @@ if __name__ == "__main__":
     logger.space()
 
     try:
-        logger.variable_logger(test, "True love")
-        logger.info("variable_logger is working.")
+        logger.info(test, "True love")
+        logger.info("logger is working.")
     except:
-        logger.warning("variable_logger is not working.")
+        logger.warning("logger is not working.")
 
     logger.space()
     
