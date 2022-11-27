@@ -38,6 +38,16 @@ python3 tester/test.py
 ```
 
 Eğer herhangi bir hata almadan .py dosyalarının ismini görüyorsanız testler başarılıdır.
+## API Kullanımı
+
+### CMD Tools
+
+| Kod | Açıklama                |
+| :-------- | :------------------------- |
+| `label2view` | Verilen klasördeki label'ları görsellere çizdirir |
+| `randomphotoselector` | Verilen klasörden rastgele sayıda fotoğraf çeker, çekilen görseller taşınır |
+| `video2frame` | Verilen klasördeki videoları istenen aralıklarla karelere böler |
+
 ## Yazarlar ve Teşekkür
 
 - [sezer-muhammed](https://github.com/sezer-muhammed) Proje yöneticisi
