@@ -1,7 +1,7 @@
 <annotation>
-    <folder>EflatunIHA</folder>
-    <filename>test.jpg</filename>
-    <path>C:\Users\muham\OneDrive\Masaüstü\EflatunIHA\test.jpg</path>
+    <folder>temp</folder>
+    <filename>fakeimg.jpg</filename>
+    <path>C:\Users\muham\OneDrive\Masaüstü\EflatunIHA\temp\fakeimg.jpg</path>
     <source>
         <database>Unknown</database>
     </source>
@@ -12,7 +12,7 @@
     </size>
     <segmented>0</segmented>
     <object>
-        <name>uav</name>
+        <name>Bus</name>
         <pose>Unspecified</pose>
         <truncated>0</truncated>
         <difficult>0</difficult>
@@ -23,7 +23,7 @@
             <ymax>500</ymax>
         </bndbox>
     </object>    <object>
-        <name>uav</name>
+        <name>IHA</name>
         <pose>Unspecified</pose>
         <truncated>0</truncated>
         <difficult>0</difficult>
