@@ -1,0 +1,37 @@
+<annotation>
+    <folder>Eflatun-IHA</folder>
+    <filename>test.jpg</filename>
+    <path>/home/iha/Desktop/iha_ws/Eflatun-IHA/test.jpg</path>
+    <source>
+        <database>Unknown</database>
+    </source>
+    <size>
+        <width>3000</width>
+        <height>1500</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>uav</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>0</xmin>
+            <ymin>0</ymin>
+            <xmax>500</xmax>
+            <ymax>500</ymax>
+        </bndbox>
+    </object>    <object>
+        <name>uav</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>10</xmin>
+            <ymin>40</ymin>
+            <xmax>900</xmax>
+            <ymax>120</ymax>
+        </bndbox>
+    </object>
+</annotation>

@@ -4,13 +4,13 @@ import os
 import sys
 
 try:
-    os.system("python utils/label.py")
+    os.system("python3 utils/label.py")
     print("utils label.py")
 except:
     pass
 
 try:
-    os.system("python utils/common.py")
+    os.system("python3 utils/common.py")
     print("utils common.py")
 except:
     pass
