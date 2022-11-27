@@ -60,6 +60,6 @@ TODO
   
 ## Lisans
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[lgpl-3.0](https://choosealicense.com/licenses/lgpl-3.0/)
 
   
