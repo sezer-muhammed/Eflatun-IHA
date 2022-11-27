@@ -14,14 +14,15 @@ ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
 from utils import constants as ct
 
-
 creation_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 LOGFILE = ROOT.joinpath(Path(f"logs/{creation_time}_Eflatun.log"))
 LOGFILE.parent.mkdir(exist_ok=True, parents=True)
-logging.basicConfig(filename=LOGFILE , format='[%(levelname)-10s: %(asctime)s] %(message)s')
+logging.basicConfig(
+    filename=LOGFILE, format='[%(levelname)-10s: %(asctime)s] %(message)s'
+)
+
 
 class EflatunLogger():
-
     def __init__(self):
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.INFO)
@@ -72,7 +73,7 @@ if __name__ == "__main__":
     logger.info("Logger is testing itself.")
 
     def test_func(a, b, c):
-        return a + b 
+        return a + b
 
     test = "Muhammed Izzet Sezer <3 Sevval Dikkaya"
 
@@ -85,7 +86,7 @@ if __name__ == "__main__":
         logger.warning("logger is not working.")
 
     logger.space()
-    
+
     try:
         logger.function_logger(test_func, 60, 5, "milyon")
         logger.info("function_logger is working.")

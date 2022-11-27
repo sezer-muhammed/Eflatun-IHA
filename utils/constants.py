@@ -8,7 +8,20 @@ TEKNOLABEL_TRAINABLE_TRUE = True
 
 TEKNOLABEL_CLASSES_SINGLE_UAV = {"uav": 0}
 TEKNOLABEL_CLASSES_DOUBLE_UAV_NONUAV = {"non-uav": 0, "uav": 1}
-TEKNOLABEL_CLASSES_ULASIM = {"car":0, "kam":1, "ismak":2, "mot":3, "bus":4, "tren":5, "ins":6, "uyam":7, "yaam":8, "uuap":9, "yuap":10, "bis":11}
+TEKNOLABEL_CLASSES_ULASIM = {
+    "car": 0,
+    "kam": 1,
+    "ismak": 2,
+    "mot": 3,
+    "bus": 4,
+    "tren": 5,
+    "ins": 6,
+    "uyam": 7,
+    "yaam": 8,
+    "uuap": 9,
+    "yuap": 10,
+    "bis": 11
+}
 
 TCSU = TEKNOLABEL_CLASSES_SINGLE_UAV
 TCDUN = TEKNOLABEL_CLASSES_DOUBLE_UAV_NONUAV

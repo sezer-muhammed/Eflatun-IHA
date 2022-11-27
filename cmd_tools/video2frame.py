@@ -11,6 +11,7 @@ import cv2
 import glob
 from pathlib import Path
 
+
 def video2frame(infile: Path, hz: float, outfile: Path):
 
     camera = cv2.VideoCapture(str(infile))
@@ -18,13 +19,13 @@ def video2frame(infile: Path, hz: float, outfile: Path):
     counter = 0
 
     fps = camera.get(cv2.CAP_PROP_FPS)
-    period = round(fps/hz)
+    period = round(fps / hz)
     print(f"Starting operation with {fps} fps and {hz} Hz, {infile}")
 
     while True:
         counter += 1
 
-        camera.set(cv2.CAP_PROP_POS_FRAMES, (counter*period)-1)
+        camera.set(cv2.CAP_PROP_POS_FRAMES, (counter * period) - 1)
         ret, frame = camera.read()
 
         if ret is False:
@@ -37,7 +38,8 @@ def video2frame(infile: Path, hz: float, outfile: Path):
         full_path = os.path.join(outfile, frame_name)
 
         cv2.imwrite(full_path, frame)
-        print(f"Frame {counter} saved", end = "\r")
+        print(f"Frame {counter} saved", end="\r")
+
 
 videos = glob.glob(opt.infolder + "/**.*", recursive=True)
 

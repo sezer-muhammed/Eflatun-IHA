@@ -420,14 +420,12 @@ if __name__ == "__main__":
 
     tester_teknolabel.get_data()
 
-
     tester_teknolabel.to_pascal(
         Path("temp/teknolabel/pascal.xml"), Path("test.jpg")
     )
     tester_teknolabel.to_yolo(
         Path("temp/teknolabel/yolo.txt"), Path("test.jpg")
     )
-
 
     tester_teknolabel_loader = TeknoLabelLoader()
     tester_teknolabel_loader(

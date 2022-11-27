@@ -9,6 +9,7 @@ import cv2
 from PIL import Image
 import xml.etree.ElementTree as ET
 
+
 def hash_255(string: str) -> int:
     """Return random number between 0 - 255 from string for color generation
 
@@ -90,7 +91,8 @@ def save_np2yolo(
     yolo_file.close()
 
 
-def load_yolo(in_file: Path, img_path: Path) -> Tuple[np.ndarray, int, int]: #! Fix The code!
+def load_yolo(in_file: Path,
+              img_path: Path) -> Tuple[np.ndarray, int, int]:  #! Fix The code!
 
     yolo_file = open(in_file, "r")
     data = yolo_file.read()
