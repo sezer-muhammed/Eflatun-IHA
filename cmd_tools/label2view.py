@@ -3,7 +3,7 @@ import argparse
 parser = argparse.ArgumentParser(description="Draw Labels On The Image Then Save")
 parser.add_argument('--infolder', type=str, default=None, help='input folder')
 parser.add_argument('--label', type=str, default=None, help='label type: "pascal" or "yolo"')
-parser.add_argument('--classes', type=str, default=None, help='label classes config name')
+parser.add_argument('--classes', type=str, default=None, help='label classes config name: "TCSU" or "TCDUN" or "TCU"')
 parser.add_argument('--show', action='store_true', help='show image realtime')
 parser.add_argument('--save', action='store_true', help='save images')
 
