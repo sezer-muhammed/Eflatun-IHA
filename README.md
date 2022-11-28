@@ -18,7 +18,7 @@ git clone https://github.com/sezer-muhammed/Eflatun-IHA.git
 Proje dizinine gidin
 
 ```bash
-cd Eflatun-IHA
+cd Eflatun-IHA/Eflatun-IHA
 ```
 
 Gerekli paketleri yükleyin
