@@ -42,12 +42,7 @@ class TeknoLabel():
             str: Returns a string to be logged.
         """
 
-        log_message = f"""
-Label Data:
-{self._label_data}
-
-Label Data Classes: {self._classes}
-        """
+        log_message = f"Label Data: {self._label_data} Label Data Classes: {self._classes}"
 
         return log_message
 
@@ -257,12 +252,9 @@ Label Data Classes: {self._classes}
 class TeknoLabelLoader():
     def __init__(self) -> None:
         """Initilizes the TeknoLabelLoader class
-
-        Raises:
-            NotImplementedError: Implies that this function is not implemented yet.
         """
         self.label_path = None
-        self.time_stamp = None
+        self.time_stamp = time.ctime()
         self.label_type = None
 
     def __call__(
@@ -292,11 +284,7 @@ class TeknoLabelLoader():
             str: Returns a string to be logged.
         """
 
-        log_message = f"""
-{"Label Path"}: {self.label_path}
-{"Access Time"}: {self.time_stamp}
-{"Label Type"}: {ct.TEKNOLABEL_TYPES[self.label_type]}
-                        """
+        log_message = f"Data Loader Access Time: {self.time_stamp}"
 
         return log_message
 
