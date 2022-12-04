@@ -5,9 +5,11 @@ from pathlib import Path
 from PIL import Image
 import cv2
 import glob
+import os
+
 
 from EflatunIHA.cmd_tools import download_example
-
+i = 1
 test_logger = logger.EflatunLogger()
 test_logger.info("Test Logger'i basarili bir sekilde calisti.\n\n")
 
@@ -16,6 +18,7 @@ data_loader = label.TeknoLabelLoader()
 test_logger.info(f"Data Loader: {data_loader}")
 
 images_path = glob.glob("eflatun_iha_test_datas/**.jpg", recursive=True)
+
 
 for image_path in images_path:
 
@@ -33,7 +36,11 @@ for image_path in images_path:
         cv2.rectangle(image, (ground_truth_data[0], ground_truth_data[1]), (ground_truth_data[2], ground_truth_data[3]), (0, 255, 0), 2)
         cv2.putText(image, ground_truth_data[-1], (ground_truth_data[0], ground_truth_data[1]), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
         cv2.imshow("image", image)
+        # save images to eflatun_iha_test_datas folder
+        cv2.imwrite(f"eflatun_iha_test_datas/Test{i}.jpg", image)
+        i = i + 1
         cv2.waitKey(10)
+        
 
     test_logger.info("Test basarili bir sekilde tamamlandi.", f"Bulunan Labellar: {example_data}", f"Resim: '{img_path}'")
     test_logger.space()

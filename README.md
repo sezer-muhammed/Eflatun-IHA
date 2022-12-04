@@ -1,4 +1,9 @@
 
+# Proje Başlığı
+
+Bu projenin ne yaptığı ve kimin için olduğu hakkında kısa bir açıklama
+
+
 # Teknofest İHA 
 
 Bu proje Teknofest Savaşan İHA yarışmasında kullanılacak olan yazılım,
@@ -55,11 +60,17 @@ Eğer herhangi bir hata almadan .py dosyalarının ismini görüyorsanız testle
   
 ## Demo
 
-TODO
+Sistemin çalışırlığını test etmek için kullanabileceğiniz bir demo kodudur. Google Drive üzerinden görselleri ve Yolo formatındaki
+metin belgelerini indirir. Çıktı olarak etiketlenmiş 16 adet görsel verir.
+Kodu çalıştırmak için demo.py dosyasının bulunduğu klasörde bir komut satırı çalıştırın. Komut satırında aşağıdaki kodu çalıştırın.
+```bash
+python3 demo.py
+``` 
+Kodun çıktıları "eflatun_iha_test_datas" klasörüne kaydedilecektir. Çıktıların görünüşleri şu şekilde olmalıdır.
+![Etiketlenmiş Görseller](Labelled_images.png)
+
 
   
 ## Lisans
 
 [lgpl-3.0](https://choosealicense.com/licenses/lgpl-3.0/)
-
-  

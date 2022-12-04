@@ -1,0 +1,68 @@
+[INFO      : 2022-12-04 11:10:54,459] Test Logger'i basarili bir sekilde calisti.
+
+
+[INFO      : 2022-12-04 11:10:54,459] Data Loader: Data Loader Access Time: Sun Dec  4 11:10:54 2022
+[INFO      : 2022-12-04 11:10:54,619] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:54,620] Bulunan Labellar: Label Data: [[833 646 1071 777 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:54,620] Resim: 'eflatun_iha_test_datas\0d6b3d2e-15_3_DJI_Mavic_chasing_RC_planes_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:54,620] 
+[INFO      : 2022-12-04 11:10:54,683] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:54,683] Bulunan Labellar: Label Data: [[685 232 1255 718 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:54,683] Resim: 'eflatun_iha_test_datas\1f91b9d2-18_296_Chasing_Planes_with_a_Prototype_FPV_Drone_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:54,683] 
+[INFO      : 2022-12-04 11:10:54,745] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:54,745] Bulunan Labellar: Label Data: [[754 587 1127 694 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:54,745] Resim: 'eflatun_iha_test_datas\32999e31-29_250_RC_FLYING_OUT_OF_SIGHT_-_HOW_FAR_CAN_YOU_GO_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:54,745] 
+[INFO      : 2022-12-04 11:10:54,825] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:54,825] Bulunan Labellar: Label Data: [[994 766 1288 897 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:54,825] Resim: 'eflatun_iha_test_datas\3d19b634-35_152_FPV_drone_chasing_RC_plane_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:54,825] 
+[INFO      : 2022-12-04 11:10:54,888] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:54,888] Bulunan Labellar: Label Data: [[1178 115 1598 372 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:54,888] Resim: 'eflatun_iha_test_datas\505e914a-18_481_FPV_Drone_Chasing_RC_Plane_-_some_near_misses_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:54,888] 
+[INFO      : 2022-12-04 11:10:54,967] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:54,967] Bulunan Labellar: Label Data: [[340 348 1529 766 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:54,967] Resim: 'eflatun_iha_test_datas\601cae3f-18_809_8202017_Bobs_60_cub_at_gilmore_field_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:54,967] 
+[INFO      : 2022-12-04 11:10:55,043] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,043] Bulunan Labellar: Label Data: [[993 238 1474 568 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,043] Resim: 'eflatun_iha_test_datas\65bd60f7-35_544_Chasing_RC_Planes_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,043] 
+[INFO      : 2022-12-04 11:10:55,121] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,121] Bulunan Labellar: Label Data: [[674 191 1580 665 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,121] Resim: 'eflatun_iha_test_datas\6698e6fb-35_296_Chasing_RC_Planes_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,121] 
+[INFO      : 2022-12-04 11:10:55,168] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,168] Bulunan Labellar: Label Data: [[650 215 1144 395 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,168] Resim: 'eflatun_iha_test_datas\7279c2ef-18_641_8202017_Bobs_60_cub_at_gilmore_field_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,168] 
+[INFO      : 2022-12-04 11:10:55,232] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,232] Bulunan Labellar: Label Data: [[951 1022 1306 1080 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,232] Resim: 'eflatun_iha_test_datas\7a6a39bb-35_260_Clouds_Chasing_Talon_X-UAV__Believer_rc_planes_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,232] 
+[INFO      : 2022-12-04 11:10:55,294] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,294] Bulunan Labellar: Label Data: [[508 233 1004 777 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,294] Resim: 'eflatun_iha_test_datas\a121c0b5-18_298_Chasing_Planes_with_a_Prototype_FPV_Drone_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,294] 
+[INFO      : 2022-12-04 11:10:55,357] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,357] Bulunan Labellar: Label Data: [[83 0 830 443 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,357] Resim: 'eflatun_iha_test_datas\ab90e1b2-35_119_Chasing_RC_Planes_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,357] 
+[INFO      : 2022-12-04 11:10:55,437] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,437] Bulunan Labellar: Label Data: [[839 562 1038 628 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,437] Resim: 'eflatun_iha_test_datas\b51241e1-15_10_DJI_Mavic_chasing_RC_planes_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,437] 
+[INFO      : 2022-12-04 11:10:55,498] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,498] Bulunan Labellar: Label Data: [[579 337 1055 682 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,498] Resim: 'eflatun_iha_test_datas\eb6127d1-18_712_8202017_Bobs_60_cub_at_gilmore_field_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,498] 
+[INFO      : 2022-12-04 11:10:55,561] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,561] Bulunan Labellar: Label Data: [[462 375 1467 752 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,561] Resim: 'eflatun_iha_test_datas\edb61d12-18_129_Chasing_Planes_with_a_Prototype_FPV_Drone_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,561] 
+[INFO      : 2022-12-04 11:10:55,625] Test basarili bir sekilde tamamlandi.
+[INFO      : 2022-12-04 11:10:55,625] Bulunan Labellar: Label Data: [[929 734 1172 792 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
+[INFO      : 2022-12-04 11:10:55,625] Resim: 'eflatun_iha_test_datas\fd8912cb-35_257_Clouds_Chasing_Talon_X-UAV__Believer_rc_planes_teknofest2023.jpg'
+[INFO      : 2022-12-04 11:10:55,625] 
