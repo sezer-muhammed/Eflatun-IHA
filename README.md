@@ -1,6 +1,6 @@
 
 # EFLATUN-IHA
-![EFLATUN](https://drive.google.com/file/d/1-arKEhjiuQ7zwFmp2QcsgLjZOpup5px7/view?usp=drivesdk)
+![EFLATUN](Görseller/eflatun_ai_logo.png)
 
 Eflatun IHA Takımı, 2023 Teknofest Savaşan IHA yarışmasına katılmak üzere ODTÜ'lü öğrenciler tarafından kurulmuştur. Projenin amacı yarışma şartnamesinde belirtildiği üzere, otonom bir şekilde uçabilen, sahadaki rakip uçakları algılayıp takip edebilen, yer istasyonuyla haberleşebilen bir IHA geliştirmektir.
 
@@ -61,8 +61,7 @@ Kodu çalıştırmak için demo.py dosyasının bulunduğu klasörde bir komut s
 python3 demo.py
 ``` 
 Kodun çıktıları "eflatun_iha_test_datas" klasörüne kaydedilecektir. Çıktıların görünüşleri şu şekilde olmalıdır.
-![Etiketlenmiş Görseller](https://drive.google.com/file/d/1_lYL12tZDasedHvDYD2-stAl83YdsYjP/view?usp=share_link)
-
+![Etiketlenmiş Görseller](Görseller/Labelled_images.png)
 ## Yazarlar ve Teşekkür
 
 - [sezer-muhammed](https://github.com/sezer-muhammed) Proje yöneticisi
