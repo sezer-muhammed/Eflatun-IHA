@@ -1,15 +1,15 @@
 
-# Proje Başlığı
+# EFLATUN-IHA
+![EFLATUN](https://drive.google.com/file/d/1-arKEhjiuQ7zwFmp2QcsgLjZOpup5px7/view?usp=drivesdk)
 
-Bu projenin ne yaptığı ve kimin için olduğu hakkında kısa bir açıklama
+Eflatun IHA Takımı, 2023 Teknofest Savaşan IHA yarışmasına katılmak üzere ODTÜ'lü öğrenciler tarafından kurulmuştur. Projenin amacı yarışma şartnamesinde belirtildiği üzere, otonom bir şekilde uçabilen, sahadaki rakip uçakları algılayıp takip edebilen, yer istasyonuyla haberleşebilen bir IHA geliştirmektir.
 
 
-# Teknofest İHA 
+# AÇIKLAMA 
 
-Bu proje Teknofest Savaşan İHA yarışmasında kullanılacak olan yazılım,
-yapay zeka, dosyalama ve yazılım yönetimi konuları ile ilgilidir.
+Bu proje Teknofest Savaşan İHA yarışmasında kullanılacak olan yazılım, yapay zeka, dosyalama ve yazılım yönetimi konuları ile ilgilidir.
 
-Burada yapılan çalışmalar daha sonrasında Jetson üzerinde çalışacak olan ROS2'de yardımcı fonksiyonlar olacaktır.
+Burada yapılan çalışmalar daha sonrasında Jetson üzerinde çalışacak olan ROS2 için yardımcı fonksiyonlar olacaktır.
 
 
 ## Bilgisayarınızda Çalıştırın
@@ -52,12 +52,6 @@ Eğer herhangi bir hata almadan .py dosyalarının ismini görüyorsanız testle
 | `video2frame` | Verilen klasördeki videoları istenen aralıklarla karelere böler |
 | `download_example` | Örnek verileri Google Drive'dan indirir |
 
-## Yazarlar ve Teşekkür
-
-- [sezer-muhammed](https://github.com/sezer-muhammed) Proje yöneticisi
-- [@octokatherine](https://www.github.com/octokatherine) tasarım ve geliştirme için. [readme.so](https://readme.so/tr/)
-
-  
 ## Demo
 
 Sistemin çalışırlığını test etmek için kullanabileceğiniz bir demo kodudur. Google Drive üzerinden görselleri ve Yolo formatındaki
@@ -67,10 +61,16 @@ Kodu çalıştırmak için demo.py dosyasının bulunduğu klasörde bir komut s
 python3 demo.py
 ``` 
 Kodun çıktıları "eflatun_iha_test_datas" klasörüne kaydedilecektir. Çıktıların görünüşleri şu şekilde olmalıdır.
-![Etiketlenmiş Görseller](Labelled_images.png)
+![Etiketlenmiş Görseller](https://drive.google.com/file/d/1_lYL12tZDasedHvDYD2-stAl83YdsYjP/view?usp=share_link)
 
+## Yazarlar ve Teşekkür
+
+- [sezer-muhammed](https://github.com/sezer-muhammed) Proje yöneticisi
+- [Semih Çakmaktepe](https://github.com/GaryH0lt) Yazılımcı
+- [@octokatherine](https://www.github.com/octokatherine) tasarım ve geliştirme için. [readme.so](https://readme.so/tr/)
 
   
 ## Lisans
 
 [lgpl-3.0](https://choosealicense.com/licenses/lgpl-3.0/)
+
