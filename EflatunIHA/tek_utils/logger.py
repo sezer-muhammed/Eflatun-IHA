@@ -12,7 +12,7 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from utils import constants as ct
+from tek_utils import constants as ct
 
 creation_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 LOGFILE = ROOT.joinpath(Path(f"logs/{creation_time}_Eflatun.log"))

@@ -12,8 +12,8 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from utils.common import load_pascal, save_np2coco, save_np2pascal, save_np2yolo, load_coco, load_yolo
-from utils import constants as ct
+from tek_utils.common import load_pascal, save_np2coco, save_np2pascal, save_np2yolo, load_coco, load_yolo
+from tek_utils import constants as ct
 
 
 class TeknoLabel():

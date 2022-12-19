@@ -1,8 +1,0 @@
-[INFO      : 2022-12-04 11:35:52,135] Test Logger'i basarili bir sekilde calisti.
-
-
-[INFO      : 2022-12-04 11:35:52,136] Data Loader: Data Loader Access Time: Sun Dec  4 11:35:52 2022
-[INFO      : 2022-12-04 11:35:52,280] Test basarili bir sekilde tamamlandi.
-[INFO      : 2022-12-04 11:35:52,281] Bulunan Labellar: Label Data: [[833 646 1071 777 'uav']] Label Data Classes: {'non-uav': 0, 'uav': 1}
-[INFO      : 2022-12-04 11:35:52,281] Resim: 'eflatun_iha_test_datas\0d6b3d2e-15_3_DJI_Mavic_chasing_RC_planes_teknofest2023.jpg'
-[INFO      : 2022-12-04 11:35:52,281] 

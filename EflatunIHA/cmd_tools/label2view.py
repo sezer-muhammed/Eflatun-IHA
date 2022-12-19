@@ -30,9 +30,9 @@ if str(ROOT) not in sys.path:
     sys.path.append(str(ROOT))  # add ROOT to PATH
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
-from utils.common import hash_255
-from utils import constants as ct
-from utils.label import TeknoLabel, TeknoLabelLoader
+from tek_utils.common import hash_255
+from tek_utils import constants as ct
+from tek_utils.label import TeknoLabel, TeknoLabelLoader
 
 label_type_mapping = {"yolo": ".txt", "pascal": ".xml"}
 label_loader_mapping = {
