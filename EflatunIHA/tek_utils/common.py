@@ -44,9 +44,8 @@ def save_np2pascal(
     pascal_writer = Writer(img_path, shape[0], shape[1])
 
     for label in data:
-
         pascal_writer.addObject(
-            label[5], label[0], label[1], label[2], label[3]
+            label[-1], label[0], label[1], label[2], label[3]
         )
 
     pascal_writer.save(out_file)
@@ -129,7 +128,7 @@ def load_coco(in_file: Path,
 def load_pascal(in_file: Path,
                 img_path: Path = None) -> Tuple[np.ndarray, int, int]:
 
-    tree = ET.parse(in_file, parser=ET.XMLParser(encoding='iso-8859-5'))
+    tree = ET.parse(in_file, parser=ET.XMLParser(encoding="utf-8"))
     root = tree.getroot()
 
     width = int(root.find('size').find('width').text)
@@ -139,10 +138,10 @@ def load_pascal(in_file: Path,
 
     for boxes in root.iter('object'):
 
-        ymin = int(boxes.find("bndbox/ymin").text)
-        xmin = int(boxes.find("bndbox/xmin").text)
-        ymax = int(boxes.find("bndbox/ymax").text)
-        xmax = int(boxes.find("bndbox/xmax").text)
+        ymin = int(float(boxes.find("bndbox/ymin").text))
+        xmin = int(float(boxes.find("bndbox/xmin").text))
+        ymax = int(float(boxes.find("bndbox/ymax").text))
+        xmax = int(float(boxes.find("bndbox/xmax").text))
         name = str(boxes.find("name").text)
 
         list_with_single_boxes = [xmin, ymin, xmax, ymax, name]
